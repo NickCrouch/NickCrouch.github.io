@@ -71,7 +71,7 @@ diversity.results[n,1] <- 0
 
 # identify single species groups
 t <- table(groups$Group)
-single.spp.gps <- t[t<2]
+single.spp.gps <- t[t==1]
 
 
 # if there are groups with single species present, record and identify when they arise
