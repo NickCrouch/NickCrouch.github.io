@@ -1,0 +1,47 @@
+#NEXUS
+[R-package APE, Thu Oct  8 10:41:58 2015]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 17;
+	TAXLABELS
+		Dryocopus_lineatus
+		Dryocopus_pileatus
+		Campethera_nivosa
+		Geocolaptes_olivaceus
+		Picus_canus
+		Blythipicus_rubiginosus
+		Picus_viridis
+		Campethera_caroli
+		Chrysocolaptes_lucidus
+		Dryocopus_martius
+		Colaptes_auratus
+		Campephilus_haematogaster
+		Campephilus_magellanicus
+		Celeus_lugubris
+		Dinopium_javanense
+		Colaptes_melanochloros
+		Celeus_flavescens
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Dryocopus_lineatus,
+		2	Dryocopus_pileatus,
+		3	Campethera_nivosa,
+		4	Geocolaptes_olivaceus,
+		5	Picus_canus,
+		6	Blythipicus_rubiginosus,
+		7	Picus_viridis,
+		8	Campethera_caroli,
+		9	Chrysocolaptes_lucidus,
+		10	Dryocopus_martius,
+		11	Colaptes_auratus,
+		12	Campephilus_haematogaster,
+		13	Campephilus_magellanicus,
+		14	Celeus_lugubris,
+		15	Dinopium_javanense,
+		16	Colaptes_melanochloros,
+		17	Celeus_flavescens
+	;
+	TREE * UNTITLED = [&R] (((((14:3.361843615,17:3.361843615):18.30898652,((16:11.49315647,11:11.49315647):8.986536126,(10:16.88769689,(2:6.295401749,1:6.295401749):10.59229515):3.591999048):1.191135678):5.387052436,15:27.0578822):3.195813347,((4:23.77144706,(3:14.676947,8:14.676947):9.094500066):4.945469357,(7:6.111140663,5:6.111140663):22.60577576):1.536778751):10.67390791,((6:32.01045268,9:32.01045268):1.27706752,(13:16.83197033,12:16.83197033):16.45555099):7.640085481);
+END;
