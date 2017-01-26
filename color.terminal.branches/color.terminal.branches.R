@@ -6,7 +6,7 @@
 # cols: character vector of length 2, start col, end col
 # non.terminal.col: vector character length 1, color non terminal branches
 
-color.terminal.branches <- function(phy, data, breaks=6, cols=c("black", "red"), non.terminal.col= "black", edge.width=1, col.bias=1, legend.title = "", show.tip.label=FALSE){
+color.terminal.branches <- function(phy, data, breaks=6, cols=c("black", "red"), non.terminal.col= "black", edge.width=1, col.bias=1, legend.title = "", show.tip.label=FALSE, alt.col.data=NULL){
 
 sapply(phy$tip.label, check.spp.search.duplicates, phy$tip.label)
 
@@ -24,8 +24,11 @@ col.vector[phy$edge[,2]>n.tips] <- non.terminal.col
 colors <-  colorRampPalette(cols, bias=col.bias)(breaks)
 
 # range of trait values present
+if(is.null(alt.col.data)==TRUE){
 range.vals <- range(data)
-
+} else {
+range.vals <- range(c(alt.col.data, data))
+}
 diff <- range.vals[2] - range.vals[1]
 
 bin.size <- diff / breaks
