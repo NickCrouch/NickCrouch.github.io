@@ -1,0 +1,56 @@
+calculate.ellipse.area - Calculate the size of morphological space occupied by taxa from multivariate morphological data
+========================================================
+
+This function calculates the amount of morphological space occupied by taxa based on the first two principle components from a principle component analysis
+
+The function code can be downloaded here
+
+```{r, quiet=T}
+library(pracma)
+library(car)
+
+## ggbiplot is used for visualizing the data
+library(ggbiplot)
+```
+
+Load the data, and load the functions
+```{r}
+dat <- read.csv("test.data.csv")
+
+head(dat)
+
+source("calculate.ellipse.area.R")
+```
+
+First we will do a manual analysis for visualization using ggbiplot. This is useful to make sure that the results returned agree visually with the data
+
+```{r}
+# Group information from our data
+grp <- dat$Subspecies
+pca1 <- prcomp(dat[,-1],scale=TRUE)
+g <- ggbiplot(pca1, obs.scale = 1, var.scale = 1, 
+              groups = grp, ellipse = TRUE, circle = FALSE)
+g <- g + theme(legend.direction = 'horizontal', 
+              legend.position = 'top')
+g <- g + coord_fixed(ratio = 1.5)
+g <- g +geom_point(size=1, aes(colour = grp))
+print(g)
+```
+
+Now we can fun the main function to calculate the volume of each ellipse The function takes the following arguments:
+```
+* morpho.data: A `data.frame` of the morphological characters for each species
+* group.info: A `factor` specifying what group each row in the `data.frame` belongs to
+* conf.interval: What confidence interval to calculate the ellipses at
+* scale.pca: Logical, should the principal components analysis scale the measurements before calculating the priniple components?
+```
+
+```{r}
+# Group information from our data
+grp <- dat$Subspecies
+
+results <- calculate.morpho.poly.area(dat[,-1], group.info=grp, conf.interval=0.9, scale.pca =TRUE)
+
+results
+```
+
