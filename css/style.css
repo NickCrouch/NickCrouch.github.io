@@ -1,7 +1,8 @@
 
 /* 
     Created on : 2 Sep, 2015, 12:33:55 AM
-    Author     : Vijayan PP
+    Author (original)     : Vijayan PP
+    Edited by             : Nick Crouch
 */
 html
 {
@@ -21,6 +22,29 @@ body {
 	background-color: #fff;
 	overflow-x: hidden;
 	line-height: 1.5;
+}
+
+/* simple horizontal line style */
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#dcdef7;
+  height: 1px;
+}
+
+/* bolder horizontal line style */
+hr.style1 {
+  border: 0;
+  clear:both;
+  display:block;
+
+  background-color:#b5b9f4;
+  height: 2px;
+  margin-left: 5%;
+  margin-right: 25%;
+  margin-bottom: 45px ;
 }
 
 /*-------------------------------------General-----------------------------------------------------------------------------*/
@@ -161,9 +185,10 @@ pre {
 	border-color: #feaf1e;
 }
 .btn-primary:hover, .btn-primary:focus {
-	background-color: #2980b9;
-	border-color: #2980b9;
+	background-color: #dd9818;
+	border-color: #dd9818;
 }
+
 .btn-info, .label-info, .alert-info {
 	background-color: #3498db;
 }
@@ -326,6 +351,7 @@ background:#fff url('../image/loader2.gif') no-repeat center center;
 }
 .features h1 {
 	text-transform: uppercase;
+	font-size: 20px;
 }
 .features block-icon{
 	text-align: center;
@@ -361,6 +387,11 @@ background:#fff url('../image/loader2.gif') no-repeat center center;
 .product > .container
 {
     padding:50px 0px;
+}
+
+.product h1 {
+	text-transform: uppercase;
+	font-size: 20px;
 }
 
 img.img-responsive {
@@ -420,6 +451,10 @@ img.img-responsive {
 {
     padding-top:40px;
     padding-bottom:0px;
+}
+.impFeature h1 {
+	text-transform: uppercase;
+	font-size: 20px;
 }
 
 /*---------------------------------------------------------slider---------------------------------------------------------------*/
