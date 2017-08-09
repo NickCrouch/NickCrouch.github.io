@@ -41,7 +41,7 @@ bin.ref[1,3] <- range.vals[1] + bin.size
 
 for(i in 2:nrow(bin.ref)){
 
-bin.ref[i,2] <- bin.ref[i-1,3]+0.0001
+bin.ref[i,2] <- bin.ref[i-1,3]+0.00001
 bin.ref[i,3] <- bin.ref[i,2] + bin.size
 
 }
