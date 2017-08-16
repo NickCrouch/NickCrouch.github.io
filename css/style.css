@@ -394,6 +394,56 @@ background:#fff url('../image/loader2.gif') no-repeat center center;
 	font-size: 20px;
 }
 
+
+.product header {
+    display:table;
+    width:100%;
+    max-width:100%;
+}
+.product header div {
+    display:table-row;
+    line-height:1.5em;
+    font-size:2em;
+    white-space:nowrap;
+}
+.product header h1 {
+    font-size:16px; /* Change font-size in header */
+    overflow:hidden;
+    display:table-cell;
+    vertical-align:middle;
+    width:1px;
+}
+.product header span.spacer {
+    display:table-cell;
+}
+.product header h1 {
+    padding:0 10px;
+}
+.product header span.spacer:after {
+    display:inline-block;
+    width:100%;
+    content:".";
+    font-size:0;
+    color:transparent;
+    height:2px;
+    background:#000;
+    vertical-align:middle;
+    position:relative;
+    top:-1px;
+}
+.product header > a {
+    font-size:.4em;
+    vertical-align:middle;
+    background:#25a2a4;
+    color:#fff;
+    text-transform:uppercase;
+    font-family:monospace;
+    border-radius:.5em;
+    padding:.3em .5em;
+    text-decoration:none;
+}
+
+
 img.img-responsive {
 		margin-left: auto;
 		margin-right: auto;
