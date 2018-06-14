@@ -17,8 +17,11 @@ total.plot.width <- x.start.diff * length(lower.vals)
 
 x.start <- 0
 
+y.lim.min <- -(max(lower.vals))
+y.lim.max <- max(upper.vals)
+
 # Create a blank plot
-plot(1:total.plot.width, seq(-max(lower.vals),max(upper.vals),length.out=length(1:total.plot.width)), type="n", xlab="",ylab="" ,xaxt="n")
+plot(1:total.plot.width, seq(-max(lower.vals),max(upper.vals),length.out=length(1:total.plot.width)), type="n", xlab="",ylab="" ,xaxt="n", xlim=c(0,total.plot.width), ylim=c(y.lim.min, y.lim.max))
 
 # Plot increase in maximum values
 for(i in 1:length(lower.vals)){
