@@ -70,7 +70,8 @@ a:hover, a:focus {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+	font-family: 'Raleway', sans-serif; /* FONT SELECTION FOR THE HEADERS OF SECTIONS */
 	font-weight: 400;
 	margin-bottom: 15px;
 	margin-top: 0;
@@ -88,8 +89,8 @@ p.lead {
 }
 p.mainp
 {
-    font-family: Verdana;
-    font-size:18px;
+    font-family: Raleway; /* font selection for the header section */
+    font-size:26px;
 }
 p{
 	margin-bottom: 20px;
@@ -257,7 +258,7 @@ background:#fff url('../image/loader2.gif') no-repeat center center;
   z-index: -107;
 }
 
-/*-------------------------------------------------Navbar------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------Navbar------------------------------------------------------------------------------------------------------------*/
 .navbar-inverse .navbar-brand {
 	padding: 30px 15px;
 	margin-right: 30px;
@@ -594,7 +595,7 @@ img.img-responsive {
     padding-top: 0.1rem;
     width:21.875rem;
     height: 3.25rem;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size:1rem;
     font-weight:300;
     color: #444;
@@ -620,7 +621,7 @@ img.img-responsive {
 
 .subscribe-submit {
     color:white;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size:1rem;
 	font-weight:600;
 	font-style:normal;
