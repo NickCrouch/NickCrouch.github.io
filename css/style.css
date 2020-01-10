@@ -139,7 +139,7 @@ pre {
 }
 .btn-primary
 {
-    background-color:#feaf1e;
+    background-color:#feaf1e;     /*---orange color---*/
     border-color:#feaf1e;
 }
 .btn, .label {
@@ -158,31 +158,31 @@ pre {
 	outline: none;
 }
 .btn-link {
-	color: #1abc9c;
+	color: #1abc9c;    /*---Green color---*/ 
 }
 .btn-link:hover, .btn-link:focus {
 	color: #16a085;
 }
 .btn-default, .label-default {
-	background-color: #34495e;
-	border-color: #34495e;
+	background-color: #a974b3;         /*---dark blue color--- original #34495e*/
+	border-color: #a974b3;
 	color: #FFF;
 }
 .btn-default:hover, .btn-default:focus {
-	background-color: #2c3e50;
+	background-color: #2c3e50;        /*---dark blue color---*/
 	border-color: #2c3e50;
 	color: #FFF;
 }
 .btn-success, .label-success, .alert-success {
-	background-color: #2ecc71;
+	background-color: #2ecc71;         /*---Green color---*/ 
 	border-color: #2ecc71;
 }
 .btn-success:hover, .btn-success:focus {
-	border-color: #27ae60;
+	border-color: #27ae60;             /*---Green color---*/ 
 	background-color: #27ae60;
 }
 .btn-primary, .label-primary {
-	background-color: #feaf1e;
+	background-color: #feaf1e;        /*---orange color---*/ 
 	border-color: #feaf1e;
 }
 .btn-primary:hover, .btn-primary:focus {
@@ -191,14 +191,14 @@ pre {
 }
 
 .btn-info, .label-info, .alert-info {
-	background-color: #3498db;
+	background-color: #3498db;       /*---blue color---*/ 
 }
 .btn-info:hover, .btn-info:focus {
 	background-color: #2980b9;
 	border-color: #2980b9;
 }
 .btn-warning, .label-warning, .alert-warning {
-	background-color: #e67e22;
+	background-color: #e67e22;     /*---dark orange color---*/ 
 	border-color: #e67e22;
 }
 .btn-warning:hover, .btn-warning:focus {
@@ -206,7 +206,7 @@ pre {
 	border-color: #d35400;
 }
 .btn-danger, .label-danger, .alert-danger {
-	background-color: #e74c3c;
+	background-color: #e74c3c;        /*---red color---*/ 
 	border-color: #e74c3c;
 }
 .btn-danger:hover, .btn-danger:focus {
@@ -504,6 +504,22 @@ img.img-responsive {
     padding-bottom:0px;
 }
 .impFeature h1 {
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+
+/*---------------------------------------------------------ImpFeatureAlt---------------------------------------------------------------*/
+.impFeatureAlt
+{
+    background:#d9d9d9;
+}
+.impFeatureAlt>.container
+{
+    padding-top:40px;
+    padding-bottom:0px;
+}
+.impFeatureAlt h1 {
 	text-transform: uppercase;
 	font-size: 20px;
 }
