@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="Nick Crouch" content="">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora">
+
+        <title>Nick Crouch</title>
+        <!-- Bootstrap core CSS -->
+        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="../css/myTemplate.css" rel="stylesheet">
+
+<style>
+	
+		body	{ width:960px; padding:100px 0; margin:0 auto; font-family:Raleway, sans-serif; }
+		#nav{
+			border:1px solid #ccc;
+			border-width:1px 0;
+			list-style:none;
+			margin:0;
+			padding:0;
+			text-align:center;
+                        background-color: #ffffff;
+		}
+		#nav li{
+			display:inline;
+		}
+		#nav a{
+			display:inline-block;
+			padding:10px;
+                        color: #b5b5b5;
+		}
+		a{
+			color:#c00;
+			text-decoration:none;
+			font-weight:bold;
+		}
+		a:hover{
+                        text-decoration: none;
+                        background-color: #dedede;
+		}
+                #nav a:hover {
+                        color: #696969;
+                        text-decoration: none;
+                }
+		
+	</style>
+
+    </head>
+
+
+    <body>
+  <div id="body>
+
+
+        <div class="container">
+            <div class="heading" >
+                <h1>NICK CROUCH</h1>
+ 		<!--
+                <p class="lead">I study macroevolutionary radiations and community formation.</p>
+		-->
+            </div>
+        </div> <!-- id container close -->
+
+
+<!-- navigation bar -->
+<ul id="nav">
+<li><a href="../index.html">HOME</a></li>
+<li><a href="../pages/research.html">RESEARCH</a></li>
+<li><a href="../pages/publications.html">PUBLICATIONS</a></li>
+<li><a href="../pages/teaching.html">TEACHING</a></li>
+<li><a href="../pages/Rcode.html">R CODE</a></li>
+<li><a href="../pages/links.html">LINKS</a></li>
+
+</ul>
+
+<div class="gap-v-small"></div>
+
+<div class="subHead"> R CODE </div>
+
+<div class="gap-v-small"></div>
+
+<!-- image -->
+<div style="width:100%;height:350px;">
+  <img src="../images/grouse.jpg" alt="Big Bend" style="float:center;width:100%;height:100%;object-fit:cover;">
+</div>
+
+<div class="gapSmall"></div>
+
+<div class="normal">
+
+<p style="font-size:18px"> RDH: Range data helper. A package designed to aid in the analysis of spatial data. The package is available via <a href = "https://github.com/NickCrouch/RDH"> GitHub </a> </p>
+	<p style="font-size:18px"> I have also contributed code snippets to <a href="https://github.com/dwbapst/paleotree">paleotree</a> and <a href="https://github.com/danlwarren/RWTY">rwty</a></p> 
+<div class="gapSmall"></div>
+
+	<p style=font-size:19px"> <strong> Individual functions </strong></p>
+	<p style="font-size:18px"> <i>Oct 24th 2014</i> <br> <a href="r_pages/phylo.diversity/phylo.diversity.html">phylo.diversity </a>: Will calculate diversity of groups through time, given a phylogeny and information on which groups the species belong to. </p>
+<hr >
+	<p style="font-size:18px"> <i>Dec 9th 2014</i> <br> <a href="r_pages/add.tip.icons/add.tip.icons.html">add.tip.icons </a>: Plot discrete species characters onto a phylogeny. </p>				
+<hr>
+	<p style="font-size:18px"> <i>Jan 15th 2015</i><br> <a href="r_pages/add_HPD_info/add.HPD.info.html">add_HPD_info </a>: Add posterior age distribution information to specified nodes on a phylogeny <i> Updated Nov 2nd 2015 </i>. </p>
+<hr>
+	<p style="font-size:18px"> <i>Feb 24th 2015</i> <br> <a href="r_pages/base.line.values/base.line.values.html">base.line.values </a>: Calculate base line origination and extinction values, following <a href=http://paleobiol.geoscienceworld.org/content/31/1/6.abstract">Foote (2005)</a>. </p>
+<hr>
+	<p style="font-size:18px"> <i> Sept 8th 2015</i> <br> unique_sister_spp: Calculates the number of unique sister species for a range of species across a set of phylogenies. This function is currently being implemented in the R package <a href="https://github.com/danlwarren/RWTY">rwty</a>. </p>
+<hr>
+
+	<p style="font-size:18px"><i> Oct 8th 2015</i><br> <a href="r_pages/color.terminal.branches/color.terminal.branches.html"> color.terminal.branches</a>: Color only the terminal branches in a phylogeny by corresponding species trait values <i> Updated Jan 26th 2017 </i>.</p>
+<hr>
+	<p style="font-size:18px"><i> Feb 16th 2016</i><br> <a href="r_pages/calculate.ellipse.area/calculate.ellipse.area.html"> calculate.ellipse.area</a>: Calculate the amount of morphological space occupied by taxa. </p>
+<hr>
+	<p style="font-size:18px"><i> Sept 20th 2016</i><br> <a href="r_pages/migration.distance/migration.distance.html"> migration.distance</a>: Calculate the migration distance for a specified species. </p>
+<hr>
+	<p style="font-size:18px"><i> Aug 16th 2017</i><br> <a href="r_pages/mirror.barplot/mirror.barplot.html"> mirror.barplot</a>: Make a mirrored barplot for comparing positive and negative changes in a variable. </p>
+<hr>
+	<p style="font-size:18px"><i> Aug 18th 2017</i><br> <a href="r_pages/make.node.age.df/make.node.age.df.html"> make.node.age.df</a>: Extract node age information from an annotated phylogeny. </p>
+<hr>
+	<p style="font-size:18px"><i> Jun 14th 2018</i><br> <a href="r_pages/branch.length.diff/branch.length.diff.html"> branch.length.diff</a>: Visualize how terminal branch lengths differ between two sets of phylogenies. </p>
+<hr>
+	<p style="font-size:18px"><i> Nov 21st 2018</i><br> <a href="r_pages/fixLineBreaks/fixLineBreaks.html"> fixLineBreaks</a>: Remove line breaks from alignment files to allow them to be read into R. </p>
+<hr>
+	<p style="font-size:18px"><i> Dec 5th 2018</i><br> <a href="r_pages/charactersSupportingClade/charactersSupportingClade.html"> characters.supporting.clade</a>: Find those characters in an alignment that support the relationship between specified taxa. </p>
+<hr>
+	<p style="font-size:18px"><i> Jan 15th 2019</i><br> <a href="r_pages/makeInp/makeInp.html"> make.inp.format</a>: Convert occurence data from the Paleobiology Database into .inp format for downstream analyses. </p>
+<hr>
+	<p style="font-size:18px"><i> Apr 16th 2019</i><br> <a href="r_pages/phyloTernaryPlot/phyloTernaryPlot.html"> phylo.ternary.plot</a>: Display the results of three branch-length transformations on a single phylogeny. </p>
+<hr>
+	<p style="font-size:18px"><i> May 6th 2019</i><br> <a href="r_pages/boxplot.by.node/boxplot.by.node.html"> boxplot.by.node </a>: Plot a boxplot next to a phylogeny in order of nodes for which the data is from. </p>
+<hr>
+	<p style="font-size:18px"><i> Aug 22nd 2019</i><br> <a href="r_pages/timeToRateShiftNode/timeToRateshiftNode.html"> time.to.rateshift.node </a>: Quantify the amount of time estimated shifts in diversification dynamics occur before target nodes. </p>
+
+</div>
+
+
+
+
+
+
+
+      
+
+
+        <!-- /.container -->
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+
+</div>
+    </body>
+</html>

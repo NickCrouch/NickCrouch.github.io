@@ -1,0 +1,68 @@
+Make HPD node plot- Add probability density information into phylogenies
+========================================================
+
+_Updated Nov 2nd 2015: Function re-written to be much more stable, and added additional functionality_
+
+The supporting files are the function code, phylogeny, and species group information.
+
+There are two functions provided, with a few dependent packages:
+```{r, quiet=T}
+library(phyloch)
+library(ape)
+library(phytools)
+library(strap)
+```
+
+
+First we must load the file containing the functions to be used, the example phylogeny, and the species group information.
+```{r}
+source("make_HPD_node_plot.R")
+phy <- read.nexus("example.phylo.nex")
+load("species_group_info.RData")
+```
+
+Next, we will generate some data to be plotted onto our phylogeny:
+```{r}
+# This function requires that "node", "min" and "max" appear in the column names in some form
+age_data <- as.data.frame(matrix(NA, ncol=3, nrow=3))
+colnames(age_data) <- c("Genus", "Minimum", "Maximum")
+age_data[1,] <- c("Genus_A", 20 ,35 )
+age_data[2,] <- c("Genus_B", 17, 28)
+age_data[3,] <- c("Genus_C", 22, 35)
+
+age_data[,2] <- as.numeric(age_data[,2])
+age_data[,3] <- as.numeric(age_data[,3])
+
+age_data
+
+```
+
+The first function provided (`find.nodes`) will identify the most recent common ancestor for each specified group. The nodes identified are where the age data will subsequently be plotted.
+
+`find.nodes` requires:
+```
+* data: A `data.frame` containing the minimum, and and maximum ages, as well as the corresponding species group names
+* phy: An object of class `phylo`
+* spp_group_list: An object of class `list` where the names match the group names in `data`, and each element contains species found in `phy$tip.label`
+* colname: A vector of class `character` and length 1. Specify the column name in `data` that correponds to the species group data
+```
+
+Using the previously defined age data, and loaded species group data:
+```{r}
+age.data.inc.nodes <- find.nodes(age_data, phy, species_group_info, colname = "Genus")
+```
+
+Now we have a `data.frame` with our age data, and the corresponding node in the phylogeny
+
+```{r}
+age.data.inc.nodes
+```
+
+
+
+
+The previously generated data can now be used to generate our plot:
+```{r}
+make_HPD_node_plot(phy=phy, data=age.data.inc.nodes, line.width=5, node.col = "lightblue",line.col = "red",node.pch=21, node.cex=2)
+```
+
