@@ -1,0 +1,351 @@
+#NEXUS
+begin mrbayes;
+
+execute full.nex;
+
+
+log start replace;
+
+[ Define partitions in data set]
+
+CHARSET nd2 = 1 - 1146;
+CHARSET atp8 = 1147 - 1359;
+CHARSET mos = 1360 - 2458;
+CHARSET cytb = 2459 - 4084;
+CHARSET egr1 = 4085 - 7689;
+CHARSET atp6 = 7690 - 8374;
+CHARSET rag2 = 8375 - 12774;
+CHARSET nd3 = 12775 - 13324;
+CHARSET rag1 = 13325 - 16634;
+CHARSET co1 = 16635 - 18427;
+CHARSET tgfb2 = 18428 - 19989;
+CHARSET 16s = 19990 - 27033;
+
+CHARSET skull = 27034-27055 27167-27172 27191 27220-27239 27307 27311-27314 27350-27352 27383-27388 27427-27433 27531-27532 27550-27553 27556-27568 27583-27584 27603 27605 27611-27644 27716 27725-27735 27775-27784 27789-27790 27796-27800;
+
+CHARSET wings = 27075-27090 27109-27120 27123-27124 27163 27179-27184 27195-27199 27256-27268 27325-27332 27358-27371 27392-27409 27441-27451 27454-27455 27458-27465 27477-27478 27480-27483 27499-27503 27510-27511 27515-27520 27523 27529-27530 27543 27548-27549 27555 27569-27571 27575-27580 27582 27589-27593 27709-27715 27721-27724 27736-27738 27740-27744 27767-27771 27791 27804-27805 27808-27811;
+
+CHARSET body = 27056-27074 27091-27092 27108 27136-27137 27166 27173-27178 27192-27194 27200-27202 27240-27255 27269-27271 27308-27309 27315-27324 27333-27335 27353-27357 27372 27389-27391 27476 27525-27528 27533-27535 27573-27574 27585-27588 27645-27653 27720 27758-27761 27801-27803 27807 27812-27814;
+
+CHARSET legs = 27093-27107 27121-27122 27125-27135 27138-27162 27185-27190 27203-27218 27272-27302 27336-27345 27373-27382 27410-27425 27434-27440 27452-27453 27456-27457 27466-27475 27479 27484-27498 27504-27509 27512-27514 27521-27514 27521-27522 27524 27536-27542 27547 27554 27572 27581 27594-27602 27604 27606-27610 27654-27708 27717-27719 27739 27745-27757 27762-27766 27772-27774 27785-27788 27792-27795 27806-27815;
+
+CHARSET otherMorpho = 27310 27346 27164 27165 27219 27303-27306 27347 27348 27426 27349 27544-27546;
+
+partition segment = 17: nd2, atp8, mos, cytb, egr1, atp6, rag2, nd3, rag1, co1, tgfb2, 16s, skull, wings, body, legs, otherMorpho ;
+
+set partition = segment;
+
+[ ################################################# ]
+
+[ Specify models of evolution across partitions ]
+
+lset applyto = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) nst = 6 rates = gamma; 
+prset applyto = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12) ratepr=variable;
+
+lset applyto=(13, 14, 15, 16, 17) rates = gamma Coding=variable;
+prset applyto=(all) ratepr=variable;
+
+[ ################################################# ]
+
+[ Some characters in the morphological partition are ordered - defined here ]
+[ Number corresponds to character number, plus number of nucleotides included ]
+ctype ordered:  27046 27048 27059 27229 27240 27243 27244 27247 27280 27294 27313 27330 27345 27355 27358 27360 27361 27365 27611 27612 27613 27614 27619 27620 27621 27623 27625 27629 27632 27634 27635 27638 27640 27641 27642 27643 27644 27646 27647 27649 27651 27655 27658 27659;
+
+[ ################################################# ]
+
+outgroup Podargus_strigoides  ;
+
+[ ################################################# ]
+
+[Topological constraints - Annotated by order and backbone constraints]
+[Topological constraints were not enforced in all analyses - see below]
+[Taxsets defined after order constraints for use in backbones]
+[Un-annotated constraints usually genera]
+[For information on avian higher-order systematics see Hackett et al. (2008) McCormack et al (2013)]
+
+constraint root = 1-. ;
+
+[Passerine constraints]
+constraint passerines = 64-159 382-396 ;
+constraint acanthisittidae = 64 386-388; [New Zealand wrens]
+constraint corviidae = 74-81 389; [Crows]
+constraint nodeB = 135-140;
+constraint nodeF = 154 155 69;
+constraint orthonyx = 143 144 391;
+constraint rhodospiza = 111 393 ;
+constraint artamidae = 73 86-91 392; [Woodswallows]
+taxset passerines = 64-159 382-396 ;
+
+[Bucerotiformes - Hornbills & Hoopoes]
+constraint bucerotiformes = 1 2 3 4 271-274 304-309 ;
+constraint hoopoes = 273 304 306-309 272 274; [Upupidae & Phoeniculidae]
+constraint Messelirrisoridae = 306-308; [stem hoopoes]
+constraint upupa = 273 304;
+taxset bucerotiformes = 1 2 3 4 271-274 304-309 ;
+
+[Nightjars & Allies - outgroup]
+constraint caprimulgiformes = 5 6 7 8 9;
+taxset caprimulgiformes = 5-9;
+
+[Mousebirds]
+constraint coliiformes = 10-14 310-325 327-332 347;
+taxset coliiformes = 10-14 310-325 327-332 347;
+
+[Coraciiformes - Kingfishers & Allies]
+constraint kingfishers = 15-24 30 31 292 293; [Alcedinidae]
+constraint groundRollers = 25-29 276; [Brachypteracidae]
+constraint roller = 32-35 ; [Coraciidae]
+constraint coracioidea = 32-35 25-29 275-286; [Rollers & Ground Rollers]
+constraint beeEaters = 37-41; [Meropidae]
+constraint motmots = 42-44 290 291; [Momotidae]
+constraint todies = 45-47 287-289; [Todidae]
+constraint coraciiformes = 15-35 37-47 275-293;
+taxset coraciiformes = 15-35 37-47 275-293;
+
+[Piciformes]
+constraint puffbird = 55-59 ; [Bucconidae]
+constraint jacamars = 60-63; [Galbulidae]
+constraint megalaimidae = 169-171; [Asian Barbets]
+constraint lybiidae = 163-168 335 336 ; [African barbets, tinkerbirds]
+constraint ramphastidae = 197-199 202-206; [Toucans, Aracaris, Toucanets]
+constraint capitonidae = 200 201 ; [New World Barbets]
+constraint indicator = 160-162; [Honeyguides]
+constraint woodpeckers = 172-196 337-345; [Picidae]
+constraint campephilus = 173 174 338; 
+constraint piciformes = 55-63 160-207 326 333-345 ;
+taxset piciformes = 55-63 160-207 326 333-345 ;
+
+
+[Trogoniformes - Trogons]
+constraint trogons = 261-270 299-303;
+taxset trogoniformes = 261-270 299-303;
+
+[Leptosomiformes - Cuckoo Roller]
+constraint cuckooRoller = 294-298 36 397;
+taxset leptosomiformes = 294-298 36 397;
+
+[Monophyletic group of fossil species, phyogenetic affinities subject of debate]
+constraint zygodactylidae = 369-381;
+taxset zygodactylidae = 369-381;
+
+[Psittaciformes - Parrots]
+constraint parrots = 208-260 346 348-368; [347 - Cyrilavis_colburnorum not included - MrBayes]
+constraint strigopidae = 240 258 359-361; [New Zealand Parrots]
+constraint vastanavis = 351 352; [stem parrot genus]
+constraint quercypsitta = 353 354; [stem parrot genus]
+constraint cacatua = 208 209 210 365 ;
+constraint define_parrot_stem partial = 208-260 : 346 348-358 362-364 366-368;
+taxset psittaciformes = 208-260 346 348-368;
+
+
+[Backbone constraints]
+
+[constraint ingroup = 1-4 10-397 ; -> segmentation fault]
+constraint backbone1 negative = 1-4 10-397 9;
+
+[Acanthisittidae Passerine split]
+constraint backbone2 partial =  65-159 382-384 389-396 : 64 386-388;
+
+constraint backbone3 = coraciiformes piciformes bucerotiformes trogoniformes coliiformes leptosomiformes; 
+constraint backbone3_forbidden negative = coraciiformes piciformes bucerotiformes trogoniformes coliiformes leptosomiformes caprimulgiformes;
+
+constraint backbone4 = passerines psittaciformes zygodactylidae ;
+constraint backbone4_forbidden negative = passerines psittaciformes zygodactylidae caprimulgiformes;
+
+
+[ ################################################# ]
+
+[Calibrate fossil species]
+
+calibrate Miocoracias_chenevali = uniform(20,22)
+	  Brachypteracias_langrandi = uniform(0.001, 0.002)
+	  Eocoracias_brachyptera = uniform(40.4, 48.6)
+	  Geranopterus_alatus = uniform(33.9, 37.2)
+	  Geranopterus_milneedwardsi = uniform(33.9, 37.2)
+	  Geranopterus_bohemicus = uniform(15, 17.5)
+	  Species_A = uniform(35,50)
+	  Species_B = uniform(35,50)
+	  Primobucco_mcgrewi = uniform(48.6, 55.8)
+	  Primobucco_frugilegus = uniform(40.4, 48.6)
+	  Primobucco_perneri = uniform(40.4, 48.6)
+	  Paracoracias_occidentalis = uniform(45,55)
+	  Paleotodus_itardiensis = uniform(28.4, 33.9)
+	  Paleotodus_emryi = uniform(33.3,33.9)
+	  Paleotodus_escampsiensis = uniform(34,36)
+	  Motmot_indet = uniform(4.9,10.3)
+	  Protornis_glarniensis = uniform(28.4,33.9)
+	  Alcedinidae_indet = uniform(15,25)
+	  Quasisyndactylus_longibrachis = uniform(45,55)
+	  Plesiocathartes_wyomingensis = uniform(33,45)
+	  Plesiocathartes_major = uniform(33,45)
+	  Plesiocathartes_kelleri = uniform(48,51)
+	  Plesiocathartes_geiselensis = uniform(33,45)
+	  Plesiocathartes_europaeus = uniform(33,45)
+	  Plesiocathartes_spp = uniform(51,54.5)
+	  Primotrogon_spp = uniform(51,54.5)
+	  Primotrogon_spp1 = uniform(30,34)
+	  Primotrogon_wintersteini = uniform(28.4,33.9)
+	  Primotrogon_pumilio = uniform(40.4,49)
+	  Septenotrogon_madseni = uniform(48.6,55.8)
+	  Upupa_antaios = uniform(0.0001,0.001)
+	  Phirriculus_pinicola = uniform(17,22)
+	  Messelirrisor_grandis = uniform(40.4,48.6)
+	  Messelirrisor_halcyrostris = uniform(40.4,48.6)
+	  Messelirrisor_parvus = uniform(40.4,48.6)
+	  Hoopoe_spp = uniform(30.5,31.5)
+	  Selmes_absurdipes = uniform(42,48)
+	  Masillacolius_brevidactylus = uniform(46,52)
+	  Oligocolius_psittacocephalon = uniform(24.6,24.8)
+	  Oligocolius_brevitarsus = uniform(28.4,33.9)
+	  Primocolius_minor = uniform(37.2,40.4)
+	  Primocolius_sigei = uniform(37.2,40.4)
+	  Clericolius_acriala = uniform(51.57,51.75)
+	  Palaeospiza_bella = uniform(33.9,37.2)
+	  Eocolius_walkeri = uniform(54.4,56.4)
+	  Necrornis_palustris = uniform(11.1, 13.7)
+	  Uintornis_lucaris = uniform(37.2, 48.6)
+	  Uintornis_marionae = uniform(37.2,48.6)
+	  Eobucco_brodkorbi = uniform(39,50)
+	  Chascacocolius_cacicirostris = uniform(40.4, 55.8)
+	  Chascacocolius_oscitans = uniform(50,54)
+	  Sandcoleidae_indet = uniform(45,52)
+	  Coliiformes_indet = uniform(45,52)
+	  Botauroides_parvus = uniform(37.2,48.6)
+	  Eoglaucidium_pallas = uniform(48.5, 55.8)
+	  Eoglaucidium_spp = uniform(48.5, 55.8)
+	  Anneavis_anneae = uniform(50.3, 55.4)
+	  Selmes_MNH.Q.O.596 = uniform(23.03,40.4)
+	  Sandcoleus_copiosus = uniform(50.3,55.8)
+	  Sylphornis_bretouensis = uniform(33.9,38)
+	  Neanis_kistneri = uniform(50.3,55.8)
+	  Capitonides_europeus = uniform(16.9,20)
+	  Capitonides_protractus = uniform(13.8,16)
+	  Cyrilavis_olsoni = uniform(48.6,55.8)
+	  Cyrilavis_colburnorum = uniform(51.57,51.75)
+	  Pseudasturides_macrocephalus = uniform(48,52)
+	  Serudaptus_pohli = uniform(40.4,48.6)
+	  Pulchrapollia_gracilis = uniform(48.6,55.8)
+	  Vastanavis_eocaena = uniform(48.6, 55.8)
+	  Vastanavis_cambayensis = uniform(48.6,55.8)
+	  Quercypsitta_sudrei = uniform(33.9,37.2)
+	  Quercypsitta_ivani = uniform(33.9, 37.2)
+	  Messelastur_gratulator = uniform(40.4, 48.6)
+	  Avolatavis_tenens = uniform(51.57,51.75)
+	  Psittacopes_lepidus = uniform(48,52)
+	  London_Clay_Species_A = uniform(48.6,55.8)
+	  Nelepsittacus_minimus = uniform(16,19)
+	  Nelepsittacus_donmertoni = uniform(16,19)
+	  Nelepsittacus_daphneleeae = uniform(16,19)
+	  Mopsitta_tanta = uniform(48.6, 55.8)
+	  Psuedasturidae_indet = uniform(48.6, 55.8)
+	  Bavaripsitta_ballmanni = uniform(13.5, 15)
+	  Xenopsitta_feifari = uniform(16,23)
+	  Palaeopsittacus_georgei = uniform(48.6,55.8)
+	  Mogontiacopsitta_miocaena = uniform(22,24)
+	  Cacatua_spp = uniform(16,23)
+	  Primozygodactylus_danielsi = uniform(48,51)
+	  Primozygodactylus_eunjooae = uniform(40.4, 48.6)
+	  Primozygodactylus_major = uniform(40.4, 48.6)
+	  Primozygodactylus_ballmani = uniform(48,51)
+	  Eozygodactylus_americanus = uniform(50.3,55.8)
+	  Primoscens_minutus = uniform(48,55)
+	  Zygodactylus_grandis = uniform(50.3,55.8)
+	  Zygodactylus_ignotus = uniform(16.9,20)
+	  Zygodactylidae_UWGM21421 = uniform(50.3, 55.8)
+	  Zygodactylidae_FMNHPA757 = uniform(50.3, 55.8)
+	  Zygodactylidae_UWGM40363 = uniform(50.3,55.8)
+	  Zygodactylus_grivensis = uniform(40.4, 48.6)
+	  Zygodactylus_luberonensis = uniform(28.4 ,33.9)
+	  Rupelramphastoides_knopfi = uniform(28.4,33.9)
+	  Picavus_litenicensis = uniform(29.5, 32)
+	  Palaeonerpes_shorti = uniform(2.5,6)
+	  Campephilus_dalquesti = uniform(0.3, 1.8)
+	  Pici_indet = uniform(23,28.4)
+	  Colaptes_spp = uniform(1.8,4.9)
+	  Australopicus_nelsonmandelai = uniform(3.6,5.3)
+	  Piculoides_saulcetensis = uniform(20.4,23)
+	  Eclectus_infectus = uniform(0.01,1)
+	  Pseudoseisuropsis_cuelloi = uniform(0.001,2.6)
+	  Pseudoseisuropsis_nehuen = uniform(0.001,1)
+	  Traversia_lyalli = uniform(0.0001,1)
+	  Dendroscansor_decurvirostris = uniform(0.1,1)
+	  Pachyplichas_yaldwyni = uniform(0.01,1)
+	  Pachyplichas_jagmi = uniform(0.01,1)
+	  Kuiornis_indicator = uniform(15.9,19)
+	  Pica_mourerae = uniform(0.781,3.6)
+	  Pandanaris_convexa = uniform(0.001,0.3)
+	  Orthonyx_kaldowinyeri = uniform(11.6,16)
+	  Kurraratapu_johnnguyeni = uniform(16,23)
+	  Rhodospiza_shaamarica = uniform(2.6,3.2)
+	  Pliocalcarius_orkhonensis = uniform(2.6,3.2)
+	  Certhiops_rummeli = uniform(18,20.5)
+	  Passerine_indet = uniform(28,34)
+;
+
+[ ################################################# ]
+
+[ Specify priors for tree ]
+
+PRSET brlenspr = clock:uniform;
+PRSET clockvarpr=igr;
+PRSET igrvarpr=exp(10) ; [default]
+PRSET clockratepr=lognorm(-7.386,1); [Ericson et al 2014 BMC Biology]
+
+[ ################################################# ]
+
+[Node calibrations]
+[Node calibrations only used when calibrating genetic data ONLY]
+
+calibrate root = uniform(50,150);
+
+[Ericson et al 2014]
+calibrate corviidae = offsetexponential(16.3,58);
+
+[D. Ksepka, personal communication]
+calibrate coracioidea = offsetexponential(51.57, 60);
+
+[Ericson et al 2014, "constraint B"]
+calibrate nodeB = offsetexponential(10.4,58);
+
+[Ericson et al 2014, "constraint F"]
+calibrate nodeF = offsetexponential(20,58);
+
+
+
+[ ################################################# ]
+
+[Previously defined topological constraints]
+
+PRSET nodeagepr = calibrated;
+
+[This line is removed for main analysis - only used in supplementary analyses]
+prset topologypr = constraints(root, bucerotiformes,coraciiformes,piciformes,cacatua,capitonidae, caprimulgiformes,coliiformes,kingfishers,groundRollers,roller,beeEaters,motmots,
+todies,puffbird,jacamars,indicator,lybiidae,hoopoes,megalaimidae,Messelirrisoridae,upupa,woodpeckers,ramphastidae,parrots,campephilus,strigopidae,vastanavis,quercypsitta,
+trogons,cuckooRoller,zygodactylidae,acanthisittidae,corviidae,nodeB, nodeF,artamidae, rhodospiza,orthonyx,passerines,backbone1,backbone2,backbone3, backbone3_forbidden ,backbone4, define_parrot_stem, backbone4_forbidden, coracioidea);
+
+
+[ ################################################# ]
+
+[Remove taxa that are either unwanted, or with too little genetic informtion]
+
+delete Psittaculirostris_desmarestii Xipholena_punicea Rupicola_peruviana Phoeniculus_damarensis_subsp._damarensis Malacoptila_fusca Jacamerops_aureus Galbula_cyanescens Nystalus_maculatus Chelidoptera_tenebrosa 48 49 50 51 52 53 54 347;
+
+
+unlink revmat=(all) shape=(all) pinvar=(all) statefreq=(all) tratio=(all);
+
+
+[ ################################################# ]
+
+[ Specify paramaters for MCMC run]
+
+mcmcp samplefreq=1000 printfr=500 nruns=2 nchain=8 relburnin=yes burninfrac=0.5 savebrlens = yes temp=0.01 checkfreq=10000 Diagnfreq=2000 Nswaps=2 Swapfreq=50;
+
+mcmc ngen=230000000 append=yes;
+
+sump ;
+sumt ;
+
+log stop;
+
+
+end;
